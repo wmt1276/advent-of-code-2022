@@ -1,7 +1,5 @@
 from aoc import get_input
 
-data = get_input(1).splitlines()
-
 def main(data: list) -> int:
     for line in data:   # Iterate Over Each Line in Data
         print(line)
