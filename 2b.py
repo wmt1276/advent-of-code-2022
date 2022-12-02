@@ -1,9 +1,12 @@
 from aoc import get_input
 
-dictionary = {'A': 'R', 'B': 'P', 'C': 'S', 'X': 'R', 'Y': 'P', 'Z': 'S'}
-score_dict = {'Z': 6, 'Y': 3, 'X': 0}
-throw_score = {'R': 1, 'P': 2, 'S': 3}
+dictionary = {'A': 'R', 'B': 'P', 'C': 'S', 'X': 'R', 'Y': 'P', 'Z': 'S'} # Dictionary Mapping Input Symbols to RPS Throw
 
+# Dictionaries Mapping Symobls to Scores
+result_score = {'Z': 6, 'X': 3, 'Y': 0} # Score for Winning, Tying, or Losing
+throw_score = {'R': 1, 'P': 2, 'S': 3}  # Score for RPS Throw
+
+# Determine Throw Based on Opponent's Throw and Desired Outcome
 def throw(opponent, self):
     if self == 'Y':
         return opponent
@@ -25,15 +28,20 @@ def throw(opponent, self):
                 return 'R'
 
 def main(data: list) -> int:
-    score = 0
+    score = 0   # Total Score for All Games
     
     for line in data:   # Iterate Over Each Line in Data
+        # Split Player Throws
         line = line.split(' ')
-        score += score_dict[line[1]]
         
-        thro = throw(dictionary[line[0]], line[1])
+        opponent = line[0]
+        self = line[1]
         
-        score += throw_score[thro]
+        score += result_score[self] # Add Result Score
+        
+        self_throw = throw(dictionary[opponent], self)  # Determine Throw
+        
+        score += throw_score[self_throw]    # Add Throw Score
 
     return score
 
