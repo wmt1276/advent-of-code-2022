@@ -4,10 +4,30 @@ from aocd import submit
 day = 10
 
 def main(data: list):
+    cycle = 0
+    x = 1
+    
+    check = range(20, 221, 40)
+    
+    strength = 0
+    
     for line in data:   # Iterate Over Each Line in Data
-        print(line)
+        cycle += 1
+        
+        if cycle in check:
+            strength += x * cycle
+            
+        if line != 'noop':
+            cycle += 1
+            
+            if cycle in check:
+                strength += x * cycle
 
-    return None
+            fields = line.split(' ')
+            
+            x += int(fields[1])
+            
+    return strength
 
 if __name__ == '__main__':
     # Get Input Data
