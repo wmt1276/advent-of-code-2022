@@ -1,7 +1,7 @@
 from aoc import get_input
 from aocd import submit
 
-day = 15
+day = 14
 
 def main(data: list):
     for line in data:   # Iterate Over Each Line in Data
@@ -18,6 +18,6 @@ if __name__ == '__main__':
     print(answer)
     
     if answer not in [None, '', 0]:
-        submit(answer, part='a', day=day, year=2022)
+        submit(answer, part='b', day=day, year=2022)
     else:
         print('No Answer Submitted')
