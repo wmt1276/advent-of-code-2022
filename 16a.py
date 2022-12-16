@@ -1,7 +1,7 @@
 from aoc import get_input
 from aocd import submit
 
-day = 17
+day = 16
 
 def main(data: list):
     for line in data:   # Iterate Over Each Line in Data
